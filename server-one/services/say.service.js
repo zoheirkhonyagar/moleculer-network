@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  name: 'greeter',
+  name: 'say',
 
   /**
    * Service settings
