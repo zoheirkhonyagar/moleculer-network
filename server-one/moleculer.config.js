@@ -17,9 +17,9 @@
  */
 module.exports = {
   // Namespace of nodes to segment your nodes on the same network.
-  namespace: 'first-server',
+  namespace: 'multi',
   // Unique node identifier. Must be unique in a namespace.
-  nodeID: null,
+  nodeID: 'server-one',
 
   // Enable/disable logging or use custom logger. More info: https://moleculer.services/docs/0.13/logging.html
   logger: true,
