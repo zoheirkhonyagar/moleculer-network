@@ -36,6 +36,7 @@ module.exports = {
         name: 'string'
       },
       handler(ctx) {
+        console.log(`Welcome, ${ctx.params.name}`);
         return `Welcome, ${ctx.params.name}`;
       }
     }
