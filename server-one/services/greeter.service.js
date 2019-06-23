@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  name: 'say',
+  name: 'greeter',
 
   /**
    * Service settings
@@ -22,8 +22,9 @@ module.exports = {
      *
      * @returns
      */
-    hello() {
-      return 'Hello Moleculer';
+    hello(ctx) {
+      return ctx.call('say.welcome', { name: 'zoheir' });
+      // return 'Hello Moleculer';
     },
 
     /**
@@ -36,8 +37,13 @@ module.exports = {
         name: 'string'
       },
       handler(ctx) {
-        console.log(`Welcome, ${ctx.params.name}`);
-        return `Welcome, ${ctx.params.name} from server 1`;
+        return `Welcome, ${ctx.params.name}`;
+      }
+    },
+
+    say: {
+      handler(ctx) {
+        return ctx.call('say.sayhi', { name: 'zoheir' });
       }
     }
   },
@@ -45,7 +51,14 @@ module.exports = {
   /**
    * Events
    */
-  events: {},
+  events: {
+    'echo.event'(data, sender) {
+      this.logger.info(
+        `<< MATH: Echo event received from ${sender}. Counter: ${data.counter}. Send reply...`
+      );
+      this.broker.emit('reply.event', data);
+    }
+  },
 
   /**
    * Methods
@@ -60,14 +73,7 @@ module.exports = {
   /**
    * Service started lifecycle event handler
    */
-  started() {
-    this.counter = 1;
-
-    setInterval(() => {
-      this.broker.logger.info(`>> Send echo event. Counter: ${this.counter}.`);
-      this.broker.emit('echo.event', { counter: this.counter++ });
-    }, 5000);
-  },
+  started() {},
 
   /**
    * Service stopped lifecycle event handler

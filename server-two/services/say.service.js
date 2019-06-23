@@ -37,7 +37,17 @@ module.exports = {
       },
       handler(ctx) {
         console.log(`Welcome, ${ctx.params.name}`);
-        return `Welcome, ${ctx.params.name} from server 1`;
+        return `Welcome, ${ctx.params.name} from server2`;
+      }
+    },
+    sayhi: {
+      params: {
+        name: 'string'
+      },
+      handler(ctx) {
+        const message = `hi ${ctx.params.name} from server 2`;
+        console.log(message);
+        return message;
       }
     }
   },
