@@ -23,8 +23,8 @@ module.exports = {
      * @returns
      */
     hello(ctx) {
-      this.broker.call('say.welcome', { name: 'zoheir' });
-      return 'Hello Moleculer';
+      return this.broker.call('say.welcome', { name: 'zoheir' });
+      // return 'Hello Moleculer';
     },
 
     /**
