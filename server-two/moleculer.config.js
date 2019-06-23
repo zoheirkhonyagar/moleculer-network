@@ -137,7 +137,9 @@ module.exports = {
   created(broker) {},
 
   // Called after broker starte.
-  started(broker) {},
+  started(broker) {
+    broker.loadServices('say');
+  },
 
   // Called after broker stopped.
   stopped(broker) {},

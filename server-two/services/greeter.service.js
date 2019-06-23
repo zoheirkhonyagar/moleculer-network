@@ -22,7 +22,8 @@ module.exports = {
      *
      * @returns
      */
-    hello() {
+    hello(ctx) {
+      ctx.call('say.wellcome', { name: 'zoheir' });
       return 'Hello Moleculer';
     },
 
